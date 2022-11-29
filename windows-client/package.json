@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "axios": "^1.2.0",
+    "node-fetch": "^3.3.0",
+    "readline-sync": "^1.4.10",
+    "socket.io": "^4.5.4"
+  }
+}
