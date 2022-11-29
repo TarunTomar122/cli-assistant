@@ -1,0 +1,114 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - add_todo
+  - get_todos
+  - mark_todo
+
+entities:
+  - todo
+  - timeframe
+  - id
+
+forms:
+  todo_form:
+    required_slots:
+      - todo
+
+  get_todos_form:
+    required_slots:
+      - timeframe
+
+  mark_todo_form:
+    required_slots:
+      - id
+
+slots:
+  todo:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: todo
+        value: todo
+      - type: from_text
+        conditions:
+          - active_loop: todo_form
+            requested_slot: todo
+
+  timeframe:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: timeframe
+        value: timeframe
+      - type: from_text
+        conditions:
+          - active_loop: get_todos_form
+            requested_slot: timeframe
+
+  id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: id
+        value: id
+      - type: from_text
+        conditions:
+          - active_loop: mark_todo_form
+            requested_slot: id
+
+responses:
+  utter_greet:
+    - text: "Hey! wassup bestie"
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_happy:
+    - text: "uwu"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_iamabot:
+    - text: "I am your bestie and I have no idea about whatever the fuck that you just asked me to do."
+
+  utter_submit:
+    - text: Done bestie!
+
+  utter_ask_todo:
+    - text: "ok bestie, tell me what to add"
+
+  utter_ask_timeframe:
+    - text: "alright, tell me the timeframe"
+
+  utter_ask_id:
+    - text: "yo, tell me the id"
+
+actions:
+  - utter_slots_values
+  - validate_todo_form
+  - action_clear_slot_values
+  - action_add_todo
+  - action_get_todos
+  - validate_get_todos_form
+  - action_mark_todo
+  - validate_mark_todo_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

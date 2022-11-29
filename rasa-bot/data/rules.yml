@@ -1,0 +1,63 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Activate view todo form
+    steps:
+      - intent: get_todos
+      - action: get_todos_form
+      - active_loop: get_todos_form
+
+  - rule: Submit view todo form
+    condition:
+      - active_loop: get_todos_form
+    steps:
+      - action: get_todos_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_get_todos
+      - action: action_clear_slot_values
+
+  - rule: Activate todo form
+    steps:
+      - intent: add_todo
+      - action: todo_form
+      - active_loop: todo_form
+
+  - rule: Submit todo form
+    condition:
+      - active_loop: todo_form
+    steps:
+      - action: todo_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_add_todo
+      - action: action_clear_slot_values
+
+  - rule: Activate mark todo form
+    steps:
+      - intent: mark_todo
+      - action: mark_todo_form
+      - active_loop: mark_todo_form
+
+  - rule: Submit mark todo form
+    condition:
+      - active_loop: mark_todo_form
+    steps:
+      - action: mark_todo_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_mark_todo
+      - action: action_clear_slot_values

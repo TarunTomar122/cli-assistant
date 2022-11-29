@@ -1,0 +1,28 @@
+{
+  "todo": {
+    "precision": 0.95,
+    "recall": 1.0,
+    "f1-score": 0.9743589743589743,
+    "support": 19,
+    "confused_with": {}
+  },
+  "micro avg": {
+    "precision": 0.95,
+    "recall": 1.0,
+    "f1-score": 0.9743589743589743,
+    "support": 19
+  },
+  "macro avg": {
+    "precision": 0.95,
+    "recall": 1.0,
+    "f1-score": 0.9743589743589743,
+    "support": 19
+  },
+  "weighted avg": {
+    "precision": 0.9500000000000001,
+    "recall": 1.0,
+    "f1-score": 0.9743589743589742,
+    "support": 19
+  },
+  "accuracy": 0.9948453608247423
+}

@@ -1,0 +1,31 @@
+[
+  {
+    "text": "add a new todo do 20 pushups before the end of the day",
+    "entities": [
+      {
+        "start": 15,
+        "end": 54,
+        "value": "do 20 pushups before the end of the day",
+        "entity": "todo"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "todo",
+        "start": 6,
+        "end": 9,
+        "confidence_entity": 0.5076234936714172,
+        "value": "new",
+        "extractor": "DIETClassifier"
+      },
+      {
+        "entity": "todo",
+        "start": 15,
+        "end": 54,
+        "confidence_entity": 0.9793103337287903,
+        "value": "do 20 pushups before the end of the day",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]
